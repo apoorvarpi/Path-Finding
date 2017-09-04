@@ -21,15 +21,15 @@ ParentX = F;
 ParentY = F;
 %initialising open, parents, heuristic, gvalues, fvalues
 Open(startx, starty)=1;
-Set = [Set, [startx, starty]];
-ParentX(startx,starty)=-1;
-ParentY(startx,starty)=-1;
-inf = Height+Width+10;
+Set = [Set; [startx, starty]];
+ParentX(startx,starty)=0;
+ParentY(startx,starty)=0;
+%inf = Height+Width+10;
 for i=1:Height
     for j=1:Width
         H(i,j) = abs(i-endx)+abs(j-endy);
-        G(i,j) = inf;
-        F(i,j) = inf;
+        G(i,j) = Inf;
+        F(i,j) = Inf;
     end;
 end;
 G(startx, starty) = 0; 
@@ -38,10 +38,13 @@ count = 1;
 %describing the eight neighbours
 xs = [-1, -1, -1, 0, 1, 1, 1, 0];
 ys = [-1, 0, 1, 1, 1, 0, -1, -1];
+flag=1;
 while count>0
     [currx, curry] = smallest(F, Open, Set);
      if currx==endx && curry==endy
-         disp 'found'
+         flag=0;
+         path(ParentX, ParentY, endx, endy);
+         disp 'FOUND'
          break;
      end;
      if currx==0&&curry==0
@@ -59,10 +62,10 @@ while count>0
                 continue;
             end;
             if Open(nx,ny)==0
-                Set = [Set, [nx,ny]];
+                Set = [Set; [nx,ny]];
                 Open(nx,ny)=1;
                 count = count+1;
-              end;
+             end;
              g = G(currx, curry) + 1;
              if g >= G(nx,ny)
                 continue;
@@ -73,4 +76,7 @@ while count>0
              F(nx,ny) = G(nx,ny)+H(nx,ny);
          end;
      end; 
+end;
+if flag==1
+    disp 'NOT FOUND';
 end;
