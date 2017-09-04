@@ -7,8 +7,6 @@ startx = x(1);
 starty = y(1);
 endx = x(2);
 endy = y(2);
-disp ([startx starty]);
-disp([endx endy]);
 close all;
 %F(Esimated), G(Travelled),H(Heuristic) matrices declaration
 F = zeros(Height, Width);
@@ -46,6 +44,9 @@ while count>0
          disp 'found'
          break;
      end;
+     if currx==0&&curry==0
+         break;
+     end
      Open(currx, curry) = 0;
      count = count-1;
      Close = [Close, [currx, curry]];
@@ -54,17 +55,17 @@ while count>0
          nx = currx+xs(i);
          ny = curry+ys(i);
          if nx>0 && nx<=Height && ny>0 && ny<=Width && MAP(nx,ny)==1
-             if ismember([nx, ny], Close)
-                 continue;
-             end;
-              if Open(nx,ny)==0
-                  Set = [Set, [nx,ny]];
-                  Open(nx,ny)=1;
-                  count = count+1;
+            if ismember([nx, ny], Close)
+                continue;
+            end;
+            if Open(nx,ny)==0
+                Set = [Set, [nx,ny]];
+                Open(nx,ny)=1;
+                count = count+1;
               end;
              g = G(currx, curry) + 1;
              if g >= G(nx,ny)
-                 continue;
+                continue;
              end;
              ParentX(nx,ny) = currx;
              ParentY(nx,ny) = curry;
