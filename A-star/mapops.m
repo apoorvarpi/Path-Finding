@@ -1,4 +1,5 @@
 im = imread('map.bmp');
+imwrite(im, 'colour.jpg');
 im = im2bw(rgb2gray(im));
 figure;
 imshow(im);

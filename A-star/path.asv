@@ -7,8 +7,8 @@ function [ANS] = path(ANS, ParentX, ParentY, nx, ny )
     ANS = path(ANS, ParentX, ParentY, ParentX(nx, ny), ParentY(nx, ny));
     disp ([nx, ny]);
     %set pixel value here
-    ANS(ny:ny+1, nx:nx+1, 1) = 255;
-    ANS(ny:ny+1, nx:nx+1, 2) = 0;
-    ANS(ny:ny+1, nx:nx+1, 3) = 0;
+    ANS(ny:ny+1, nx-1:nx+1, 1) = 255;
+    ANS(ny:ny+1, nx-1:nx+1, 2) = 0;
+    ANS(ny-1:ny+1, nx-1:nx+1, 3) = 0;
 end
 

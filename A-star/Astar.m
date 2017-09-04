@@ -39,12 +39,14 @@ count = 1;
 xs = [-1, -1, -1, 0, 1, 1, 1, 0];
 ys = [-1, 0, 1, 1, 1, 0, -1, -1];
 flag=1;
+%declaring the answer
+ANS = imread('colour.jpg');
 while count>0
     [currx, curry] = smallest(F, Open, Set);
      if currx==endx && curry==endy
          flag=0;
-         path(ParentX, ParentY, endx, endy);
-         disp 'FOUND'
+         ANS = path(imread('colour.jpg'), ParentX, ParentY, endx, endy);
+         disp 'FOUND';
          break;
      end;
      if currx==0&&curry==0
@@ -57,7 +59,7 @@ while count>0
      for i=1:8
          nx = currx+xs(i);
          ny = curry+ys(i);
-         if nx>0 && nx<=Height && ny>0 && ny<=Width && MAP(nx,ny)==1
+         if nx>0 && nx<=Width && ny>0 && ny<=Height && MAP(nx,ny)==1
             if ismember([nx, ny], Close)
                 continue;
             end;
@@ -74,9 +76,13 @@ while count>0
              ParentY(nx,ny) = curry;
              G(nx,ny) = g;
              F(nx,ny) = G(nx,ny)+H(nx,ny);
+             ANS(ny, nx, 1) = 0;
+             ANS(ny, nx, 2) = 0;
+             ANS(ny, nx, 3) = 255;
          end;
      end; 
 end;
 if flag==1
     disp 'NOT FOUND';
 end;
+imshow(ANS);
