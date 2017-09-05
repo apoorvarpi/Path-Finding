@@ -20,7 +20,7 @@ Open = F;
 ParentX = F;
 ParentY = F;
 %initialising open, parents, heuristic, gvalues, fvalues
-Open(startx, starty)=1;
+Open(starty, starty)=1;
 Set = [Set; [startx, starty]];
 ParentX(startx,starty)=0;
 ParentY(startx,starty)=0;
@@ -68,7 +68,7 @@ while count>0
      for i=1:8
          nx = currx+xs(i);
          ny = curry+ys(i);
-         if nx>0 && nx<=Height && ny>0 && ny<=Width && MAP(nx,ny)==1
+         if nx>0 && nx<=Height && ny>0 && ny<=Width && MAP(ny,nx)==1
             if ismember([nx, ny], Close)
                 continue;
             end;
