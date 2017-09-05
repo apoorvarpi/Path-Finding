@@ -10,6 +10,7 @@ im1 = imdilate(im,[se1 se2],'full');
 %1px = 50mm
 im1 = imcomplement(im1);
 imwrite(im1,'padded.bmp');
+imwrite(im1, 'padded.jpg');
 im1 = uint8(im1);
 im1 = 255.*im1;
 figure;
