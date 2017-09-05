@@ -18,7 +18,6 @@ for i=1:size(Set,1)
     %else
         %disp 'not in set';
         %disp ([currx curry]);
-        %continue;
     end
 end
 %disp 'returning'
