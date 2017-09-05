@@ -88,7 +88,6 @@ while count>0
              ANS(ny, nx, 1) = 0;
              ANS(ny, nx, 2) = 0;
              ANS(ny, nx, 3) = 255;
-             imshow(ANS);
          end;
      end; 
 end;
@@ -104,4 +103,3 @@ if flag==1
     ANS(endy-2:endy+2, endx-2:endx+2, 3) = 0;
 end;
 imshow(ANS);
-title('Final');
