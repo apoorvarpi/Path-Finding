@@ -15,6 +15,10 @@ for i=1:size(Set,1)
             y=curry;
             min = F(currx,curry);
         end
+    %else
+        %disp 'not in set';
+        %disp ([currx curry]);
+        %continue;
     end
 end
 %disp 'returning'

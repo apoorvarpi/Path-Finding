@@ -102,6 +102,7 @@ if flag==1
     ANS(starty-2:starty+2, startx-2:startx+2, 1) = 0;
     ANS(starty-2:starty+2, startx-2:startx+2, 2) = 255;
     ANS(starty-2:starty+2, startx-2:startx+2, 3) = 0;
+
     ANS(endy-2:endy+2, endx-2:endx+2, 1) = 0;
     ANS(endy-2:endy+2, endx-2:endx+2, 2) = 255;
     ANS(endy-2:endy+2, endx-2:endx+2, 3) = 0;
