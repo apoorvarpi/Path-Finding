@@ -58,6 +58,7 @@ while count>0
          flag=0;
          ANS = path(imread('colour.jpg'), ParentX, ParentY, endx, endy);
          disp 'FOUND';
+         disp (G(endx,endy));
          break;
      end;
      if currx==0&&curry==0
@@ -80,6 +81,9 @@ while count>0
                 count = count+1;
              end;
              g = G(currx, curry) + 1;
+             if abs(xs(i))==abs(ys(i))
+                 g = g+0.414;
+             end;
              if g >= G(nx,ny)
                 continue;
              end;
