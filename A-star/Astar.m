@@ -38,7 +38,7 @@ count = 1;
 %flag for found
 flag=1;
 %declaring the answer
-ANS = imread('colour.jpg');
+ANS = imread('padded.jpg');
 ANS(startx:startx+1, starty:starty+1, 1) = 0;
 ANS(startx:startx+1, starty:starty+1, 2) = 255;
 ANS(startx:startx+1, starty:starty+1, 3) = 0;
