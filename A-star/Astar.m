@@ -62,9 +62,9 @@ while count>0
          disp (G(endx,endy));
          break;
      end;
-     if currx==0&&curry==0
-         break;
-     end
+     %if currx==0&&curry==0
+     %    break;
+     %end
      ANS(currx, curry, 1) = 0;
      ANS(currx, curry, 2) = 0;
      ANS(currx, curry, 3) = 255;
