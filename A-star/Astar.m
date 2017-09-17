@@ -28,6 +28,9 @@ ParentY(startx,starty)=0;
 for i=1:Height
     for j=1:Width
         H(i,j) = sqrt((i-endx)*(i-endx)+(j-endy)*(j-endy));
+        if MAP(i,j)==0
+            H(i,j) = Inf;
+        end;
         G(i,j) = Inf;
         F(i,j) = Inf;
     end;
@@ -38,7 +41,7 @@ count = 1;
 %flag for found
 flag=1;
 %declaring the answer
-ANS = imread('padded.jpg');
+ANS = imread('colour.jpg');
 ANS(startx:startx+1, starty:starty+1, 1) = 0;
 ANS(startx:startx+1, starty:starty+1, 2) = 255;
 ANS(startx:startx+1, starty:starty+1, 3) = 0;
@@ -62,9 +65,6 @@ while count>0
          disp (G(endx,endy));
          break;
      end;
-     %if currx==0&&curry==0
-     %    break;
-     %end
      ANS(currx, curry, 1) = 0;
      ANS(currx, curry, 2) = 0;
      ANS(currx, curry, 3) = 255;
@@ -78,7 +78,8 @@ while count>0
          for j=-4:4
             nx = currx+i;
             ny = curry+j;
-            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width 
+            %calling radius check in next line, choose most optimum radius.
+            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width && radius_check(MAP,nx,ny,1)==true
                 if (Close(nx,ny)==1)
                     continue;
                 end;

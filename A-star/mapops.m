@@ -3,7 +3,7 @@ imwrite(im, 'colour.jpg');
 im = im2bw(rgb2gray(im));
 im = imcomplement(im);
 im1 = imcomplement(im);
-x = 16;
+x = 18; % choose appropriate value
 im1 = safety(im1,x);
 imwrite(im1,'padded.bmp');
 imwrite(im1, 'padded.jpg');
