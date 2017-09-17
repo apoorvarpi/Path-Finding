@@ -79,7 +79,7 @@ while count>0
             nx = currx+i;
             ny = curry+j;
             %calling radius check in next line, choose most optimum radius.
-            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width && radius_check(MAP,nx,ny,1)==true
+            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width && radius_check(MAP,nx,ny,2)==true
                 if (Close(nx,ny)==1)
                     continue;
                 end;
