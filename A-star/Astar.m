@@ -1,13 +1,14 @@
-MAP = imread('padded.bmp');
+MAP = imread('map.bmp');
 [Height, Width] = size(MAP);
 imshow(imread('map.bmp'));
 %start position, end position
-[x y] = ginput(2);
-startx = y(1);
-starty = x(1);
-endx = y(2);
-endy = x(2);
-close all;
+% [x y] = ginput(2);
+% startx = y(1);
+% starty = x(1);
+% endx = y(2);
+% endy = x(2);
+% close all;
+tic;
 %F(Esimated), G(Travelled),H(Heuristic) matrices declaration
 G = zeros(Height, Width);
 H = single(zeros(Height, Width));
@@ -41,7 +42,7 @@ count = 1;
 %flag for found
 flag=1;
 %declaring the answer
-ANS = imread('colour.jpg');
+ANS = imread('padded.jpg');
 ANS(startx:startx+1, starty:starty+1, 1) = 0;
 ANS(startx:startx+1, starty:starty+1, 2) = 255;
 ANS(startx:startx+1, starty:starty+1, 3) = 0;
@@ -65,10 +66,10 @@ while count>0
          disp (G(endx,endy));
          break;
      end;
-     ANS(currx, curry, 1) = 0;
-     ANS(currx, curry, 2) = 0;
-     ANS(currx, curry, 3) = 255;
-     imshow(ANS);
+       ANS(currx, curry, 1) = 0;
+       ANS(currx, curry, 2) = 0;
+       ANS(currx, curry, 3) = 255;
+       imshow(ANS);
      Open(currx, curry) = 0;
      F(currx, curry) = Inf;
      count = count-1;
@@ -79,7 +80,7 @@ while count>0
             nx = currx+i;
             ny = curry+j;
             %calling radius check in next line, choose most optimum radius.
-            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width && radius_check(MAP,nx,ny,2)==true
+            if ~(i==0&&j==0) && nx>0 && nx<=Height && ny>0 && ny<=Width && radius_check(MAP,nx,ny,9)==true
                 if (Close(nx,ny)==1)
                     continue;
                 end;
@@ -110,5 +111,7 @@ if flag==1
     ANS(endx-2:endx+2, endy-2:endy+2, 2) = 255;
     ANS(endx-2:endx+2, endy-2:endy+2, 3) = 0;
 end;
+toc;
 imshow(ANS);
 title('Final');
+beep;
